@@ -4,7 +4,10 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect,JsonResponse,FileResponse
+from django.template import loader
+from models import Blog,BlogPost
+
 def hello(request):
 	return HttpResponse('<html>Hello World</html>')
 	
@@ -21,6 +24,7 @@ def showBlogList(request):
 	context = {'blogs':blogs}
 	html = t.render(context)
 	return HttpResponse(html)
+	
 	
 def archive(request):
 	posts = BlogPost.objects.all()
