@@ -1,0 +1,10 @@
+{% extends "base.html"%}
+{% block content %}
+	 <div class = "col-md-9">
+	<h2>{{blog.title}}</h2>
+	Author: {{blog.author.name}}
+	<br/>
+	<p>{{blog.content}}</p>
+	 </div>
+	 
+{% endblock%}
