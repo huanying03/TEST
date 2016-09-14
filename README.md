@@ -35,6 +35,8 @@ INSTALLED_APPS:
 
 for example:
 
+from django.contrib import admin
+
 class BlogPost(models.Model):
 
   title = Models.CharField(max_length = 50)
@@ -55,6 +57,12 @@ admin.site.register(BlogPost,BlotPostAdmin)
 
 for example:
 
+from django.template import loader
+
+from django.http import HttpResponse,HttpResponseRedirect,JsonResponse,FileResponse
+
+from models import Blog,BlogPost
+
 def archive(request):
 
   posts = BlogPost.objects.all()
@@ -65,4 +73,20 @@ def archive(request):
   
   return HttpResponse(t.render(c))
   
+## Config URL with response function
+
+- $ vi mysite/urls.py
+
+url(r'^$',views,showBlogList),
+
+url(r'^blog/(\d+)$',views.showBlog),
+
+url(r'^blog/',views.archive)
+
+## Create html templates
+
+- $ vi blog/templates/base.html
+- $ vi blog/templates/archive.html
+- $ vi blog/templates/blog.html
+- $ vi blog/templates/blog-list.html
   
